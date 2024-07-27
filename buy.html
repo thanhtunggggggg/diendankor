@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo_Forum</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+  </head>
+  <body>
+    <div class="gradient"></div>
+    <!-- banner -->
+    <div class="banner">
+      <img src="assets/img/banner.png" alt="" />
+    </div>
+
+    <!-- navbar -->
+    <div class="navbar">
+      <div class="nav">
+        <ul class="menu">
+          <li style="background-color: black" id="active_nav">
+            <i class="fa-regular fa-message"></i>
+            <span>DIỄN ĐÀN</span>
+          </li>
+          <li id="job-item">
+            <i class="fa-solid fa-check"></i>
+            <span>VIỆC LÀM</span>
+          </li>
+          <li style="background-color: #74777c" id="buy-item">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>MUA BÁN</span>
+          </li>
+        </ul>
+        <ul class="login">
+          <li>
+            <i class="fa-solid fa-lock"></i>
+            <span id="loginBtn">Đăng nhập</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-person-circle-plus"></i>
+            <span id="signupBtn">Đăng ký</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeLoginModal">&times;</span>
+        <h2>Đăng nhập</h2>
+        <form>
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="Nhập email" />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Nhập mật khẩu"
+            />
+          </div>
+          <button type="submit">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeSignupModal">&times;</span>
+        <h2>Đăng ký</h2>
+        <form>
+          <div class="form-group">
+            <label for="signupFullName">Họ và tên</label>
+            <input
+              type="text"
+              id="signupFullName"
+              placeholder="Nhập họ và tên"
+            />
+          </div>
+          <!-- select -->
+          <div class="select-container" id="selectContainer">
+            <div class="select-box" id="selectBox">
+              <span id="selectValue">Thành phố đang ở ...</span>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="select-popup" id="selectPopup">
+              <div class="select-option">Busan</div>
+              <div class="select-option">Ulsan</div>
+              <div class="select-option">Teku</div>
+            </div>
+          </div>
+          <!-- sex -->
+          <div class="select-container" id="selectContainer1">
+            <div class="select-box" id="selectBox1">
+              <span id="selectValue1">Giới tính</span>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="select-popup" id="selectPopup1">
+              <div class="select-option1">Nam</div>
+              <div class="select-option1">Nữ</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" placeholder="Nhập email" />
+          </div>
+          <div class="form-group">
+            <label for="signupPhone">Số điện thoại</label>
+            <input
+              type="tel"
+              id="signupPhone"
+              placeholder="Nhập số điện thoại"
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Nhập mật khẩu"
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupConfirmPassword">Nhập lại mật khẩu</label>
+            <input
+              type="password"
+              id="signupConfirmPassword"
+              placeholder="Nhập lại mật khẩu"
+            />
+          </div>
+          <button type="submit">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- search -->
+    <div
+      style="
+        width: 100%;
+        height: 40px;
+        background-color: #74777c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="search-container" id="searchContainer">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm kiếm..." />
+        </div>
+        <div class="search-popup" id="searchPopup">
+          <div>
+            <input type="checkbox" id="searchTitle" />
+            <label for="searchTitle">Chỉ tìm trong tiêu đề</label>
+          </div>
+          <div style="margin-top: 10px">
+            <label for="searchBy">By:</label>
+            <input type="text" id="searchBy" placeholder="Thành viên" />
+          </div>
+          <div>
+            <button>SEARCH</button>
+            <button>NÂNG CAO</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="fill_plus" id="openPopup">
+        <span>LỌC NÂNG CAO</span>
+      </button>
+      <div class="popup" id="popup">
+        <div class="popup-content">
+          <span class="close1" id="closePopup">&times;</span>
+          <div
+            style="
+              display: flex;
+              width: 100%;
+              height: 50px;
+              align-items: center;
+              justify-content: space-around;
+            "
+          >
+            <h2>Các thẻ đã chọn</h2>
+            <button class="confirm">XÁC NHẬN</button>
+          </div>
+          <div id="selectedTags"></div>
+          <div
+            style="width: 100%; height: 0.5px; background-color: #74777c"
+          ></div>
+          <div class="buttons">
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #6dd5ed, #2193b0)"
+            >
+              Mua
+            </button>
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #9afcff, #ffe9e3)"
+            >
+              Bán
+            </button>
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #ff9a9e, #fad0c4)"
+            >
+              Busan
+            </button>
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #a5eb9d, #8a5b6b)"
+            >
+              Ulsan
+            </button>
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #15ff00, #fad0c4)"
+            >
+              Daegu
+            </button>
+            <button
+              class="add-tag"
+              style="background: linear-gradient(135deg, #ebea9d, #0d7ee7)"
+            >
+              Seoul
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- warning -->
+    <div
+      style="
+        width: 1136px;
+        border: 2px solid #0d7ee7;
+        margin: 20px 0;
+        padding: 20px 30px;
+      "
+    >
+      <p style="color: yellow; font-weight: bold; font-size: 20px">
+        💥 NỘI QUY
+      </p>
+      <ul
+        style="
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 20px;
+          list-style: none;
+          color: aliceblue;
+        "
+      >
+        <li>1️⃣ Một con vịt</li>
+        <li>2️⃣ Xòe ra hai cái cánh</li>
+        <li>3️⃣ Nó kêu rằng</li>
+        <li>4️⃣ Tụi mày chỉ được đăng tối đa 2 bài 1 ngày và một bài tối đa 1 bình luận</li>
+        <li>5️⃣ Bài có nội dung độc hại sẽ bị cấm vĩnh viễn</li>
+      </ul>
+    </div>
+    <!-- Topic -->
+    <div class="trend">
+      <button>
+        <span>Topic mới</span>
+      </button>
+    </div>
+
+    <div
+      style="
+        width: 1196px;
+        height: 930px;
+        background-color: rgb(48, 47, 47);
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <!-- trend - card 1 -->
+      <div class="card">
+        <p>1</p>
+        <button>Bán</button>
+        <button>Seoul</button>
+        <button>Điện thoại</button>
+        <span>Cần nhượng lại Iporn 15 promax pin 88%</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">3</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>4</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">12 phút trước</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 2 -->
+      <div class="card">
+        <p>2</p>
+        <button>Bán</button>
+        <button>Daegu</button>
+        <button>PC</button>
+        <span>Mình để lại card màn hình 4080 còn bảo hành giá rẻ</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">2</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>1</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 3 -->
+      <div class="card">
+        <p>3</p>
+        <button>Mua</button>
+        <button>Seoul</button>
+        <span>Cần mua xe đạp điện cũ</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">8</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>6</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 4 -->
+      <div class="card">
+        <p style="background-color: white; color: red">4</p>
+        <button>Bán</button>
+        <button>Ulsan</button>
+        <button>PC</button>
+        <span>Bán lại bộ pc cấu hình chơi game hentai vừa mua</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">2</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>2</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 5 -->
+      <div class="card">
+        <p style="background-color: white; color: red">5</p>
+        <button>Bán</button>
+        <button>Daegu</button>
+        <button>Đồ gia dụng</button>
+        <span>Mình để lại máy khoan hồng</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">1</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>1</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 6 -->
+      <div class="card">
+        <p style="background-color: white; color: red">6</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 7 -->
+      <div class="card">
+        <p style="background-color: white; color: red">7</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>Ngon quá pepsi ơi❤️😘😂🍿🥩🍔😶‍🌫️🙄😪</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 8 -->
+      <div class="card">
+        <p style="background-color: white; color: red">8</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 9 -->
+      <div class="card">
+        <p style="background-color: white; color: red">9</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 10 -->
+      <div class="card">
+        <p style="background-color: white; color: red">10</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 11 -->
+      <div class="card">
+        <p style="background-color: white; color: red">11</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>Ngon quá pepsi ơi❤️😘😂🍿🥩🍔😶‍🌫️🙄😪</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 12 -->
+      <div class="card">
+        <p style="background-color: white; color: red">12</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 13 -->
+      <div class="card">
+        <p style="background-color: white; color: red">13</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 14 -->
+      <div class="card">
+        <p style="background-color: white; color: red">14</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 15 -->
+      <div class="card">
+        <p style="background-color: white; color: red">15</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>Ngon quá pepsi ơi❤️😘😂🍿🥩🍔😶‍🌫️🙄😪</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 16 -->
+      <div class="card">
+        <p style="background-color: white; color: red">16</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>Ngon quá pepsi ơi❤️😘😂🍿🥩🍔😶‍🌫️🙄😪</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 17 -->
+      <div class="card">
+        <p style="background-color: white; color: red">17</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 18 -->
+      <div class="card">
+        <p style="background-color: white; color: red">18</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 19 -->
+      <div class="card">
+        <p style="background-color: white; color: red">19</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>HÔM NAY TRỜI CÓ MƯA RẤT TO</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- trend - card 20 -->
+      <div class="card">
+        <p style="background-color: white; color: red">20</p>
+        <button>Hỏi đáp</button>
+        <button>Hỏi đáp</button>
+        <span>Ngon quá pepsi ơi❤️😘😂🍿🥩🍔😶‍🌫️🙄😪</span>
+        <div
+          style="
+            width: 500px;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: flex-end;
+            gap: 30px;
+          "
+        >
+          <div
+            style="
+              width: 180px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <i class="fa-solid fa-comments" style="color: white"></i>
+            <h5 style="margin-right: 20px">14,3M</h5>
+            <i
+              class="fa-solid fa-thumbs-up"
+              style="color: rgb(0, 140, 255)"
+            ></i>
+            <h5>12,3M</h5>
+          </div>
+          <div
+            style="
+              width: 130px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100; font-size: 11px">Hôm qua lúc 01:15</h5>
+          </div>
+          <div
+            style="
+              width: 100px;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+            "
+          >
+            <h5 style="font-weight: 100">abcxyz</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- list-page -->
+    <div
+      style="
+        margin-bottom: 20px;
+        gap: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <p style="background-color: white; padding: 5px 9px; border-radius: 50%">
+        <
+      </p>
+      <p
+        style="
+          font-size: 20px;
+          color: #dad612;
+          background-color: #74777c;
+          padding: 7px 12px;
+        "
+      >
+        1
+      </p>
+      <p style="font-size: 15px; color: white; padding: 7px 12px">2</p>
+      <p style="font-size: 15px; color: white; padding: 7px 12px">3</p>
+      <p style="font-size: 15px; color: white; padding: 7px 12px">....</p>
+      <p style="background-color: white; padding: 5px 9px; border-radius: 50%">
+        >
+      </p>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div style="width: 1234px; display: flex; justify-content: space-between">
+        <div>
+          <div style="margin-bottom: 20px; display: flex; gap: 20px">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-google"></i>
+          </div>
+          <a style="color: white" href=""
+            >Forum software by XenForo® © XenForo Ltd.</a
+          >
+        </div>
+        <div class="f">
+          <div style="display: flex; gap: 15px; margin-bottom: 20px">
+            <p style="color: #00b09b">Liên hệ</p>
+            <p style="color: yellow">Gửi inbox cho Admin</p>
+            <p style="color: orange">Nội quy diễn đàn</p>
+          </div>
+          <p>Diễn đàn không chịu trách nhiệm nội dung do thành viên đăng tải</p>
+          <p>
+            Nếu có vi phạm hoặc cần hỗ trợ, xin hãy gửi email đến:
+            admin@rphang.net
+          </p>
+          <i
+            >For violations & content management please contact via:
+            admin@rphang.net</i
+          >
+          <p>Liên hệ quảng cáo đặt banner:</p>
+          <p>quangcaovip360@gmail.com | Telegram: tonytran1999</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
